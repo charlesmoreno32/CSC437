@@ -1,0 +1,22 @@
+{
+  "name": "csc437_labs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charlesmoreno32/CSC437_Labs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/charlesmoreno32/CSC437_Labs/issues"
+  },
+  "homepage": "https://github.com/charlesmoreno32/CSC437_Labs#readme",
+  "description": "",
+  "workspaces": [
+    "packages/*"
+  ]
+}
