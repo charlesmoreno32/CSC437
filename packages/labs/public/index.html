@@ -1,49 +1,83 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Charles Moreno's Personal Website</title>
     <link href="styles.css" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playwrite+AU+SA:wght@100..400&family=Roboto+Slab&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playwrite+AU+SA:wght@100..400&family=Roboto+Slab&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" src="./components/main.mjs"></script>
+    <script type="module" src="./components/navbar.mjs"></script>
+  </head>
+  <body>
     <!-- Hello, I'm a comment -->
     <header>
+      <div class="header-top">
         <h1 class="page_header">Charles Moreno</h1>
-        <nav>
-            <a href="index.html" class="nav_link">Home</a>
-            <a href="resume.html" class="nav_link">Resume</a>
-            <a href="gaming.html" class="nav_link">Gaming</a>
-        </nav>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <label>
+          <input type="checkbox" autocomplete="off" id="dark-mode-toggle" />
+          Dark mode
+        </label>
+        <button class="menu-button">Menu</button>
+      </div>
+      <nav-bar></nav-bar>
     </header>
     <main id="home-main">
-        <img 
-            src="IMG_6440.JPG"
-            alt="Selfie of me during Christmas"
-            width="200"
-            height="350">
-        <dl class="contact">
-            <dt>Email</dt>
-            <dd>charlesmoreno007@gmail.com or cmoren30@calpoly.edu</dd>
-        
-            <dt>Phone</dt>
-            <dd>(213) 514-0797</dd>
+      <img
+        src="IMG_6440.JPG"
+        alt="Selfie of me during Christmas"
+        width="200"
+        height="350"
+      />
+      <dl class="contact">
+        <dt>Email</dt>
+        <dd>charlesmoreno007@gmail.com or cmoren30@calpoly.edu</dd>
 
-            <dt>Github</dt>
-            <dd><a href="https://github.com/charlesmoreno32" class="link">charlesmoreno32</a></dd>
-        </dl>
-        <div id="about">
-            <h2>About Me</h2>
-            <hr>
-            <p>I'm a fourth year computer science major planning on concentrating in privacy & security taking Dynamic Web Development!</p>
-            <p><br>Fun facts about me:</p>
-            <ul>
-                <li>I enrolled in this course late becuase I planned on taking Intro to Digital Art to learn photoshop but it seemed to be too much work and I didn't have any drawing experience which seemed super helpful.<b>Would not recommend.</b></li>
-                <li>I like to watch & play basketabll and watch football. I finished 5th in fantasy this season.</li>
-                <li>I've been learning the guitar and know 2 fingerstyle songs so far: <i>Blackbird & Fast Car</i></li>
-            </ul>
-        </div>
+        <dt>Phone</dt>
+        <dd>(213) 514-0797</dd>
+
+        <dt>Github</dt>
+        <dd>
+          <a href="https://github.com/charlesmoreno32" class="link"
+            >charlesmoreno32</a
+          >
+        </dd>
+      </dl>
+      <div id="about">
+        <h2>About Me</h2>
+        <hr />
+        <p>
+          I'm a fourth year computer science major planning on concentrating in
+          privacy & security taking Dynamic Web Development!
+        </p>
+        <p><br />Fun facts about me:</p>
+        <ul>
+          <li>
+            I enrolled in this course late becuase I planned on taking Intro to
+            Digital Art to learn photoshop but it seemed to be too much work and
+            I didn't have any drawing experience which seemed super helpful.<b
+              >Would not recommend.</b
+            >
+          </li>
+          <li>
+            I like to watch & play basketabll and watch football. I finished 5th
+            in fantasy this season.
+          </li>
+          <li>
+            I've been learning the guitar and know 2 fingerstyle songs so far:
+            <i>Blackbird & Fast Car</i>
+          </li>
+        </ul>
+      </div>
     </main>
-</body>
+  </body>
 </html>

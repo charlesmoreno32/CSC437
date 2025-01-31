@@ -1,7 +1,28 @@
 :root {
-    --color-accent: #FAEC32;
-    --color-link: var(--color-accent);
-    --color-text: #F2F2F2;
-    --font-header: "Playwrite AU SA", serif;
-    --font-text: 
+  --color-background-header: #a3c6fa;
+  --color-background: #ccf7f7;
+  --color-text: #0a2020;
+  --color-heading: #525556;
+  --color-subheading: #571697;
+
+  --color-text-bold: #c30404dc;
+  --color-link: #7b0849;
+  --color-link-hover: rgb(255, 0, 0);
+  --color-border: var(--color-link);
+
+  --font-header: "Playwrite AU SA", serif;
+  --font-text: "Roboto Slab", serif;
+}
+
+body.dark-mode {
+  --color-background-header: #022548;
+  --color-background: #005a9c;
+  --color-heading: #a5acaf;
+  --color-subheading: #ffe53d;
+  --color-link: #faec32;
+  --color-link-hover: #ff9a26;
+  --color-text: #f2f2f2;
+  --color-text-bold: #f3c4c4;
+  --font-header: "Playwrite AU SA", serif;
+  --font-text: "Roboto Slab", serif;
 }

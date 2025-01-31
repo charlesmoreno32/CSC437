@@ -1,47 +1,70 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Resume</title>
     <link href="styles.css" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playwrite+AU+SA:wght@100..400&family=Roboto+Slab&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playwrite+AU+SA:wght@100..400&family=Roboto+Slab&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" src="./components/main.mjs"></script>
+    <script type="module" src="./components/navbar.mjs"></script>
+  </head>
+  <body>
     <!-- Hello, I'm a comment -->
     <header>
+      <div class="header-top">
         <h1 class="page_header">Resume</h1>
-        <nav>
-            <a href="index.html" class="nav_link">Home</a>
-            <a href="resume.html" class="nav_link">Resume</a>
-            <a href="gaming.html" class="nav_link">Gaming</a>
-        </nav>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <label>
+          <input type="checkbox" autocomplete="off" id="dark-mode-toggle" />
+          Dark mode
+        </label>
+        <button class="menu-button">Menu</button>
+      </div>
+      <nav-bar></nav-bar>
     </header>
     <main>
-        <h2>Contact</h2>
-        <hr>
-        <dl class="contact">
-            <dt>Email</dt>
-            <dd>charlesmoreno007@gmail.com or cmoren30@calpoly.edu</dd>
-        
-            <dt>Phone</dt>
-            <dd>(213) 514-0797</dd>
+      <h2>Contact</h2>
+      <hr />
+      <dl class="contact">
+        <dt>Email</dt>
+        <dd>charlesmoreno007@gmail.com or cmoren30@calpoly.edu</dd>
 
-            <dt>Github</dt>
-            <dd><a href="https://github.com/charlesmoreno32" class="link">charlesmoreno32</a></dd>
-        
-        </dl>
-        <h2>Education</h2>
-        <hr>
-        <ul>
-            <li><b>I'm cracked</b></li>
-            <li>Cal Poly BS Computer Science Privacy & Security Concentration, expected graduation June 2025</li>
-        </ul>
-        <h2>Experience</h2>
-        <ul>
-            <li>IT Intern for a bit</li>
-            <li>Participated in Cal Poly's Summer Undergraduate Research Program for a malware lab activity where I tried to hack ESP32 microchips</li>
-        </ul>
+        <dt>Phone</dt>
+        <dd>(213) 514-0797</dd>
+
+        <dt>Github</dt>
+        <dd>
+          <a href="https://github.com/charlesmoreno32" class="link"
+            >charlesmoreno32</a
+          >
+        </dd>
+      </dl>
+      <h2>Education</h2>
+      <hr />
+      <ul>
+        <li><b>I'm cracked</b></li>
+        <li>
+          Cal Poly BS Computer Science Privacy & Security Concentration,
+          expected graduation June 2025
+        </li>
+      </ul>
+      <h2>Experience</h2>
+      <ul>
+        <li>IT Intern for a bit</li>
+        <li>
+          Participated in Cal Poly's Summer Undergraduate Research Program for a
+          malware lab activity where I tried to hack ESP32 microchips
+        </li>
+      </ul>
     </main>
-</body>
+  </body>
 </html>
