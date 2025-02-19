@@ -23,6 +23,7 @@ body.dark-mode {
   --color-link-hover: #ff9a26;
   --color-text: #f2f2f2;
   --color-text-bold: #f3c4c4;
+
   --font-header: "Playwrite AU SA", serif;
   --font-text: "Roboto Slab", serif;
 }

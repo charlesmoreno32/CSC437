@@ -51,6 +51,7 @@ class Navbar extends HTMLElement {
       { href: "index.html", text: "Home" },
       { href: "resume.html", text: "Resume" },
       { href: "gaming.html", text: "Gaming" },
+      { href: "todos", text: "Todos" },
     ];
 
     // Get the current URL path
