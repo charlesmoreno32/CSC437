@@ -1,35 +1,62 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Homepage } from "./components/Homepage.jsx";
+import { CategoryGallery } from "./components/categories/CategoryGallery.jsx";
+import { CategoryDetails } from "./components/categories/CategoryDetails.jsx";
+import { useCategoryFetching } from "./components/categories/useCategoryFetching.js";
+import { MainLayout } from "./components/MainLayout.jsx";
+import { Routes, Route } from "react-router";
+import { useState } from "react";
+import { AccountSettings } from "./components/AccountSettings.jsx";
+import { Profile } from "./components/Profile.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [accountUsername, setAccountUsername] = useState("User");
+  const { categoriesLoading, fetchedCategories } = useCategoryFetching("");
+  const [displayedCategories, setDisplayedCategories] = useState("");
+  const [isDarkMode, setDarkMode] = useState(false);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Routes>
+      <Route
+        element={
+          <MainLayout
+            setSearchedCategories={setDisplayedCategories}
+            isDarkMode={isDarkMode}
+            setDarkMode={setDarkMode}
+          />
+        }
+      >
+        <Route
+          path="/"
+          element={
+            <Homepage
+              isLoading={categoriesLoading}
+              fetchedCategories={fetchedCategories}
+              userName={accountUsername}
+            />
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <Profile
+              username={accountUsername}
+              onUsernameChange={setAccountUsername}
+            />
+          }
+        />
+        <Route
+          path="/categories"
+          element={
+            <CategoryGallery
+              isLoading={categoriesLoading}
+              fetchedCategories={fetchedCategories}
+            />
+          }
+        />
+        <Route path="/categories/:categoryId" element={<CategoryDetails />} />
+      </Route>
+    </Routes>
+  );
 }
 
-export default App
+export default App;
