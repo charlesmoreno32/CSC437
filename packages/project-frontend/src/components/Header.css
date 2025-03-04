@@ -1,0 +1,41 @@
+@import "../tokens.css";
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-header-background);
+  padding: 0 2em;
+}
+
+header div {
+  display: flex;
+  gap: 3em;
+}
+
+header nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+@media (min-width: 769px) {
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-header-background);
+    padding: 0 2em;
+  }
+
+  header div {
+    display: flex;
+    gap: 3em;
+  }
+
+  header nav {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+  }
+}

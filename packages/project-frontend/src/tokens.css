@@ -1,0 +1,23 @@
+:root {
+  --color-header-background: rgb(158, 156, 156);
+  --color-header-text: rgb(23, 23, 23);
+
+  --color-background: #f8f8f8;
+  --color-text: #272626;
+
+  --color-link: #646cff;
+  --color-link-visited: rgb(98, 8, 92);
+  --color-border: var(--color-link);
+}
+
+body.dark-mode {
+  --color-header-background: rgb(23, 23, 23);
+  --color-header-text: rgb(158, 156, 156);
+
+  --color-background: #f8f8f8;
+  --color-text: #272626;
+
+  --color-link: #646cff;
+  --color-link-visited: rgb(98, 8, 92);
+  --color-border: var(--color-link);
+}
