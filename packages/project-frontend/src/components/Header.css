@@ -8,11 +8,6 @@ header {
   padding: 0 2em;
 }
 
-header div {
-  display: flex;
-  gap: 3em;
-}
-
 header nav {
   display: flex;
   flex-direction: column;
@@ -25,12 +20,6 @@ header nav {
     justify-content: space-between;
     align-items: center;
     background-color: var(--color-header-background);
-    padding: 0 2em;
-  }
-
-  header div {
-    display: flex;
-    gap: 3em;
   }
 
   header nav {

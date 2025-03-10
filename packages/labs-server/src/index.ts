@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 import path from "path";
 import { MongoClient } from "mongodb";
 import { ImageProvider } from "./ImageProvider";
+import { registerImageRoutes } from "./routes/images";
+import { registerAuthRoutes, verifyAuthToken } from "./routes/auth";
 
 dotenv.config(); // Read the .env file in the current working directory, and load values into process.env.
 const PORT = process.env.PORT || 3000;
@@ -25,14 +27,14 @@ async function setUpServer() {
   const app = express();
 
   app.use(express.static(staticDir));
+  app.use(express.json());
+
+  registerAuthRoutes(app, mongoClient);
+  app.use("/api/*", verifyAuthToken);
+  registerImageRoutes(app, mongoClient);
 
   app.get("/hello", (req: Request, res: Response) => {
     res.send("Hello, World");
-  });
-
-  app.get("/api/images", (req: Request, res: Response) => {
-    const imageProvider = new ImageProvider(mongoClient);
-    imageProvider.getAllImages().then((images) => res.send(images));
   });
 
   app.get("/images", (req: Request, res: Response) => {

@@ -1,9 +1,6 @@
-body {
-  color: var(--color-text);
-  background-color: var(--color-background);
-}
+@import "../tokens.css";
 
-.outlet {
+#mainlayout_outlet {
   padding: 0 2em;
   color: var(--color-text);
   background-color: var(--color-background);

@@ -29,7 +29,7 @@ export function MainLayout({
         isDarkMode={isDarkMode}
         setDarkMode={setDarkMode}
       />
-      <div className="outlet">
+      <div id="mainlayout_outlet">
         <Outlet />
       </div>
     </div>
