@@ -1,6 +1,14 @@
 import { useEffect, useState } from "react";
 
-export function DarkModeToggle({ isDarkMode, setDarkMode }) {
+interface DarkModeToggleProps {
+  isDarkMode: boolean;
+  setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export function DarkModeToggle({
+  isDarkMode,
+  setDarkMode,
+}: DarkModeToggleProps) {
   useEffect(() => {
     if (isDarkMode) {
       document.body.classList.add("dark-mode");

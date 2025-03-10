@@ -1,9 +1,23 @@
-import { MainLayout } from "../MainLayout.jsx";
-import { useCategoryFetching } from "./useCategoryFetching.js";
 import "./CategoryGallery.css";
 import { Link } from "react-router";
 
-export function CategoryGallery({ isLoading, fetchedCategories }) {
+interface CategoryGalleryProps {
+  isLoading: boolean;
+  fetchedCategories: Category[];
+}
+
+interface Category {
+  categoryId: string;
+  name: string;
+  description: string;
+  cover_src: string;
+  images: string[];
+}
+
+export function CategoryGallery({
+  isLoading,
+  fetchedCategories,
+}: CategoryGalleryProps) {
   const categoryElements = fetchedCategories.map((category) => (
     <div key={category.categoryId}>
       <Link

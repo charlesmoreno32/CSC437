@@ -1,7 +1,10 @@
-import { MainLayout } from "./MainLayout.jsx";
+import React, { useState, useEffect } from "react";
 
-export function AccountSettings({ onUsernameChange }) {
-  const handleUsernameChange = (e) => {
+interface AccountSettingsProps {
+  onUsernameChange: React.Dispatch<React.SetStateAction<string>>;
+}
+export function AccountSettings({ onUsernameChange }: AccountSettingsProps) {
+  const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newUsername = e.target.value;
     onUsernameChange(newUsername); // Update state in App
   };

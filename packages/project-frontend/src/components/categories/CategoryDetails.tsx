@@ -1,12 +1,17 @@
-import { MainLayout } from "../MainLayout.jsx";
 import { useCategoryFetching } from "./useCategoryFetching.js";
 import { useParams } from "react-router-dom";
 import "./CategoryGallery.css";
 
 export function CategoryDetails() {
   const { categoryId } = useParams();
-  const { isLoading, fetchedCategories } = useCategoryFetching(categoryId, 500);
-  if (isLoading) {
+  if (!categoryId) {
+    return <h2>Invalid category</h2>;
+  }
+  const { categoriesLoading, fetchedCategories } = useCategoryFetching(
+    categoryId,
+    500
+  );
+  if (categoriesLoading) {
     return <div>Loading...</div>;
   }
   const categoryData = fetchedCategories[0];

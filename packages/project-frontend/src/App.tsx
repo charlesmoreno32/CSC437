@@ -1,17 +1,27 @@
-import { Homepage } from "./components/Homepage.jsx";
-import { CategoryGallery } from "./components/categories/CategoryGallery.jsx";
-import { CategoryDetails } from "./components/categories/CategoryDetails.jsx";
+import { Homepage } from "./components/Homepage.tsx";
+import { CategoryGallery } from "./components/categories/CategoryGallery.tsx";
+import { CategoryDetails } from "./components/categories/CategoryDetails.tsx";
 import { useCategoryFetching } from "./components/categories/useCategoryFetching.js";
-import { MainLayout } from "./components/MainLayout.jsx";
+import { MainLayout } from "./components/MainLayout.tsx";
 import { Routes, Route } from "react-router";
 import { useState } from "react";
-import { AccountSettings } from "./components/AccountSettings.jsx";
-import { Profile } from "./components/Profile.jsx";
+import { AccountSettings } from "./components/AccountSettings.tsx";
+import { Profile } from "./components/Profile.tsx";
+
+interface Category {
+  categoryId: string;
+  name: string;
+  description: string;
+  cover_src: string;
+  images: string[];
+}
 
 function App() {
   const [accountUsername, setAccountUsername] = useState("User");
   const { categoriesLoading, fetchedCategories } = useCategoryFetching("");
-  const [displayedCategories, setDisplayedCategories] = useState("");
+  const [displayedCategories, setDisplayedCategories] = useState<Category[]>(
+    []
+  );
   const [isDarkMode, setDarkMode] = useState(false);
 
   return (
@@ -19,7 +29,7 @@ function App() {
       <Route
         element={
           <MainLayout
-            setSearchedCategories={setDisplayedCategories}
+            setDisplayedCategories={setDisplayedCategories}
             isDarkMode={isDarkMode}
             setDarkMode={setDarkMode}
           />

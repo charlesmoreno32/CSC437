@@ -1,14 +1,19 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
-export function Profile({ username, onUsernameChange }) {
+interface ProfileProps {
+  username: string;
+  onUsernameChange: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export function Profile({ username, onUsernameChange }: ProfileProps) {
   const [password, setPassword] = useState("");
 
-  const handleUsernameChange = (e) => {
+  const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newUsername = e.target.value;
     onUsernameChange(newUsername); // Update state in App
   };
 
-  const handlePasswordChange = (e) => {
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newPassword = e.target.value;
     setPassword(newPassword);
   };
