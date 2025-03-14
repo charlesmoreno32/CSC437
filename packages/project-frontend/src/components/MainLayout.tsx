@@ -23,12 +23,8 @@ export function MainLayout({
   setDarkMode,
 }: MainLayoutProps) {
   return (
-    <div>
-      <Header
-        setDisplayedCategories={setDisplayedCategories}
-        isDarkMode={isDarkMode}
-        setDarkMode={setDarkMode}
-      />
+    <div id="mainlayout_container">
+      <Header isDarkMode={isDarkMode} setDarkMode={setDarkMode} />
       <div id="mainlayout_outlet">
         <Outlet />
       </div>

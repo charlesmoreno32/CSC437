@@ -36,6 +36,16 @@
   max-height: 60vh;
 }
 
+@media (min-width: 572px) and (max-width: 769px) {
+  .ImageGallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 10rem);
+    gap: 1em;
+    color: var(--color-text);
+    background-color: var(--color-background);
+  }
+}
+
 @media (min-width: 769px) {
   .ImageGallery {
     display: grid;

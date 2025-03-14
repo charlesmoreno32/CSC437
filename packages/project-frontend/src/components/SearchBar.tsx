@@ -38,6 +38,7 @@ export const SearchBar = ({ setSearchedCategories }: SearchProps) => {
   return (
     <div className="input-wrapper">
       <input
+        className="searchbar"
         placeholder="Search"
         value={input}
         onChange={(e) => {

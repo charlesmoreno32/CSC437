@@ -14,17 +14,44 @@ header nav {
   gap: 1em;
 }
 
-@media (min-width: 769px) {
+@media (max-width: 320px) {
+  .responsive-div {
+    display: none;
+  }
+}
+
+@media (min-width: 572px) and (max-width: 769px) {
   header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    flex-direction: row;
     align-items: center;
     background-color: var(--color-header-background);
+    min-width: 100vh;
   }
 
   header nav {
     display: flex;
     flex-direction: row;
     gap: 1em;
+    min-width: 100%;
+  }
+}
+
+@media (min-width: 769px) {
+  header {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--color-header-background);
+    min-width: 100vh;
+  }
+
+  header nav {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    min-width: 100%;
   }
 }

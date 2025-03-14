@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 3000;
 
 // Lab 18
 const staticDir = process.env.STATIC_DIR || "public";
+const uploadDir = process.env.IMAGE_UPLOAD_DIR || "uploads";
 
 const { MONGO_USER, MONGO_PWD, MONGO_CLUSTER, DB_NAME } = process.env;
 
@@ -27,6 +28,7 @@ async function setUpServer() {
   const app = express();
 
   app.use(express.static(staticDir));
+  app.use("/uploads", express.static(uploadDir));
   app.use(express.json());
 
   registerAuthRoutes(app, mongoClient);
@@ -37,7 +39,7 @@ async function setUpServer() {
     res.send("Hello, World");
   });
 
-  app.get("/images", (req: Request, res: Response) => {
+  app.get("*", (req: Request, res: Response) => {
     res.sendFile(
       path.join(__dirname, "../src/imageGallery/index.html"),
       (err) => {
@@ -47,10 +49,6 @@ async function setUpServer() {
         }
       }
     );
-  });
-
-  app.get("*", (req: Request, res: Response) => {
-    console.log("none of the routes above me were matched");
   });
 
   app.listen(PORT, () => {

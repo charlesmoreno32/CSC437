@@ -42,6 +42,7 @@ function App() {
               isLoading={categoriesLoading}
               fetchedCategories={fetchedCategories}
               userName={accountUsername}
+              setDisplayedCategories={setDisplayedCategories}
             />
           }
         />

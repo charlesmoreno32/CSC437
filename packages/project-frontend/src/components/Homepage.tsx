@@ -1,9 +1,11 @@
 import { CategoryGallery } from "./categories/CategoryGallery.tsx";
+import { SearchBar } from "./SearchBar.tsx";
 
 interface HomepageProps {
   userName: string;
   isLoading: boolean;
   fetchedCategories: Category[];
+  setDisplayedCategories: React.Dispatch<React.SetStateAction<Category[]>>;
 }
 
 interface Category {
@@ -18,10 +20,12 @@ export function Homepage({
   userName,
   isLoading,
   fetchedCategories,
+  setDisplayedCategories,
 }: HomepageProps) {
   return (
     <div>
       <h2>Welcome, {userName}</h2>
+      <SearchBar setSearchedCategories={setDisplayedCategories} />
       <CategoryGallery
         isLoading={isLoading}
         fetchedCategories={fetchedCategories}

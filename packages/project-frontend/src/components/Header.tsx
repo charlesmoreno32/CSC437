@@ -5,7 +5,6 @@ import { DarkModeToggle } from "./DarkModeToggle.tsx";
 import React, { useState, useEffect } from "react";
 
 interface HeaderProps {
-  setDisplayedCategories: React.Dispatch<React.SetStateAction<Category[]>>;
   isDarkMode: boolean;
   setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -18,21 +17,20 @@ interface Category {
   images: string[];
 }
 
-export function Header({
-  setDisplayedCategories,
-  isDarkMode,
-  setDarkMode,
-}: HeaderProps) {
+export function Header({ isDarkMode, setDarkMode }: HeaderProps) {
   return (
-    <header>
-      <div>
-        <nav>
-          <Link to="/">Home</Link>
-          <DarkModeToggle isDarkMode={isDarkMode} setDarkMode={setDarkMode} />
-          <SearchBar setSearchedCategories={setDisplayedCategories} />
-          <Link to="/profile">Profile Picture</Link>
-        </nav>
-      </div>
+    <header id="header">
+      <nav>
+        <Link to="/">Home</Link>
+        {/* <div className="responsive-div"></div>
+        <div className="responsive-div"></div>
+        <div className="responsive-div"></div>
+        <div className="responsive-div"></div>
+        <div className="responsive-div"></div> */}
+        <DarkModeToggle isDarkMode={isDarkMode} setDarkMode={setDarkMode} />
+
+        <Link to="/profile">Profile Picture</Link>
+      </nav>
     </header>
   );
 }

@@ -5,3 +5,7 @@
   color: var(--color-text);
   background-color: var(--color-background);
 }
+
+#mainlayout_container {
+  min-width: 100%;
+}

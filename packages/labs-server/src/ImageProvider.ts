@@ -20,48 +20,20 @@ export class ImageProvider {
   async getAllImages(authorId?: string): Promise<Image[]> {
     // TODO #2
     const imagesCollectionName = process.env.IMAGES_COLLECTION_NAME;
-    const usersCollectionName = process.env.USERS_COLLECTION_NAME;
 
-    if (!imagesCollectionName || !usersCollectionName) {
-      throw new Error("Missing collection name environment variables");
+    if (!imagesCollectionName) {
+      throw new Error("Missing collection name environment variable");
     }
 
     const db = this.mongoClient.db();
     const imagesCollection = db.collection<Image>(imagesCollectionName);
-    const usersCollection = db.collection<User>(usersCollectionName);
 
     const filter = authorId ? { author: authorId } : {};
+
+    // Simply return the images as-is without trying to resolve `author`
     const images = await imagesCollection.find(filter).toArray();
 
-    // Array to hold the updated images
-    const updatedImages: Image[] = [];
-
-    // Process each image
-    for (const image of images) {
-      // Find the corresponding user
-      const user = await usersCollection.findOne({
-        _id: image.author,
-      });
-
-      if (user) {
-        // Replace the author field with the full user object
-        const updatedImage = {
-          ...image,
-          author: user.username, // Embed the full user object
-        };
-        updatedImages.push(updatedImage);
-      } else {
-        console.warn(
-          `User not found for image: ${image.name}'s author: ${image.author}`
-        );
-        const updatedImage = {
-          ...image,
-          author: "N/A",
-        };
-        updatedImages.push(updatedImage);
-      }
-    }
-    return updatedImages;
+    return images;
   }
 
   async updateImageName(imageId: string, newName: string): Promise<Number> {
@@ -79,5 +51,28 @@ export class ImageProvider {
       { $set: { name: newName } }
     );
     return result.matchedCount;
+  }
+
+  async createImage(image: Image): Promise<Boolean> {
+    const imagesCollectionName = process.env.IMAGES_COLLECTION_NAME;
+
+    if (!imagesCollectionName) {
+      return false;
+      throw new Error("Missing collection name environment variable");
+    }
+
+    const db = this.mongoClient.db();
+    const imagesCollection = db.collection<Image>(imagesCollectionName);
+
+    // Insert the new image document into the collection
+    const result = await imagesCollection.insertOne(image);
+
+    if (!result.acknowledged) {
+      return false;
+      throw new Error("Failed to insert image document.");
+    }
+
+    // Return the created image document
+    return true;
   }
 }
