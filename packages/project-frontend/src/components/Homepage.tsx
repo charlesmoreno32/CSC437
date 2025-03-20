@@ -5,27 +5,27 @@ interface HomepageProps {
   userName: string;
   isLoading: boolean;
   fetchedCategories: Category[];
-  setDisplayedCategories: React.Dispatch<React.SetStateAction<Category[]>>;
+  authToken: string;
 }
 
 interface Category {
-  categoryId: string;
+  _id: string;
   name: string;
   description: string;
   cover_src: string;
-  images: string[];
+  image_ids: string[];
 }
 
 export function Homepage({
   userName,
   isLoading,
   fetchedCategories,
-  setDisplayedCategories,
+  authToken,
 }: HomepageProps) {
   return (
     <div>
       <h2>Welcome, {userName}</h2>
-      <SearchBar setSearchedCategories={setDisplayedCategories} />
+      {/* <SearchBar  /> */}
       <CategoryGallery
         isLoading={isLoading}
         fetchedCategories={fetchedCategories}

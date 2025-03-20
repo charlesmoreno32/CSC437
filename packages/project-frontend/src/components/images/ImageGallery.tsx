@@ -1,6 +1,5 @@
 import { MainLayout } from "../MainLayout.js";
 import { useImageFetching } from "./useImageFetching.js";
-import { ImageUploadForm } from "./ImageUploadForm.js";
 import "./ImageGallery.css";
 import { Link } from "react-router";
 
@@ -25,16 +24,11 @@ export function ImageGallery({
 }: ImageGalleryProps) {
   const imageElements = fetchedImages.map((image: Image) => (
     <div key={image._id} className="ImageGallery-photo-container">
-      <Link to={"/images/" + image._id}>
-        <img src={image.src} alt={image.name} />
-      </Link>
+      <img src={image.src} alt={image.name} />
     </div>
   ));
   return (
     <div>
-      <h3>Upload Images</h3>
-      <ImageUploadForm authToken={authToken} />
-      <h2>Image Gallery</h2>
       {isLoading && "Loading..."}
       <div className="ImageGallery">{imageElements}</div>
     </div>

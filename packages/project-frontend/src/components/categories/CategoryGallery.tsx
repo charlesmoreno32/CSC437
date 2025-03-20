@@ -7,11 +7,11 @@ interface CategoryGalleryProps {
 }
 
 interface Category {
-  categoryId: string;
+  _id: string;
   name: string;
   description: string;
   cover_src: string;
-  images: string[];
+  image_ids: string[];
 }
 
 export function CategoryGallery({
@@ -19,9 +19,9 @@ export function CategoryGallery({
   fetchedCategories,
 }: CategoryGalleryProps) {
   const categoryElements = fetchedCategories.map((category) => (
-    <div key={category.categoryId}>
+    <div key={category._id}>
       <Link
-        to={"/categories/" + category.categoryId}
+        to={"/categories/" + category._id}
         className="ImageGallery-preview-link"
       >
         <img src={category.cover_src} alt={category.description} />

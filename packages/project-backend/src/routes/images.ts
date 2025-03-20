@@ -24,9 +24,6 @@ export function registerImageRoutes(
           .getAllImages(userId)
           .then((images) => res.status(200).send(images))
           .catch((error) => console.error(error));
-        if (userId === "67c0b8") {
-          console.log("User 67c0b8 logged");
-        }
       } else {
         imageProvider.getAllImages().then((images) => {
           res.status(200).send(images);
@@ -39,19 +36,25 @@ export function registerImageRoutes(
   });
 
   app.get("/api/categories", (req: Request, res: Response) => {
-    const categoryId = req.query.categoryId;
     try {
-      if (categoryId) {
-        imageProvider
-          .getAllImages(categoryId)
-          .then((images) => res.status(200).send(images))
-          .catch((error) => console.error(error));
-      } else {
-        categoryProvider
-          .getAllCategories()
-          .then((categories) => res.status(200).send(categories))
-          .catch((error) => console.error(error));
-      }
+      let categoryId: string | undefined = undefined;
+      categoryProvider
+        .getAllCategories()
+        .then((categories) => res.status(200).send(categories))
+        .catch((error) => console.error(error));
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Internal Server Error");
+    }
+  });
+
+  app.get("/api/categories/:id", (req: Request, res: Response) => {
+    try {
+      const categoryId = req.params.id;
+      imageProvider
+        .getAllImages(categoryId)
+        .then((images) => res.status(200).send(images))
+        .catch((error) => console.error(error));
     } catch (error) {
       console.error(error);
       res.status(500).send("Internal Server Error");
@@ -93,7 +96,7 @@ export function registerImageRoutes(
     handleImageFileErrors,
     async (req: Request, res: Response) => {
       // Final handler function after the above two middleware functions finish running
-      const { name } = req.body;
+      const { name, category } = req.body;
       const file = req.file;
 
       if (!file || !name) {
@@ -107,8 +110,8 @@ export function registerImageRoutes(
           _id: file.filename,
           src: `/uploads/${file.filename}`,
           name: name,
-          likes: 0,
           author: username,
+          cat_ids: [category],
         };
         const successBool = await imageProvider.createImage(image);
         if (successBool) {

@@ -2,6 +2,7 @@ import { Collection, MongoClient } from "mongodb";
 import bcrypt from "bcrypt";
 
 interface ICredentialsDocument {
+  _id: string;
   username: string;
   password: string;
   image_ids: string[];
@@ -30,7 +31,8 @@ export class CredentialsProvider {
     const hashedPassword = await bcrypt.hash(plaintextPassword, salt);
 
     await this.collection.insertOne({
-      username,
+      _id: username,
+      username: username,
       password: hashedPassword,
       image_ids: [],
     });

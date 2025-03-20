@@ -4,7 +4,8 @@ import { Outlet } from "react-router";
 import "./MainLayout.css";
 
 interface MainLayoutProps {
-  setDisplayedCategories: React.Dispatch<React.SetStateAction<Category[]>>;
+  authToken: string;
+  setAuthToken: React.Dispatch<React.SetStateAction<string>>;
   isDarkMode: boolean;
   setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -18,13 +19,19 @@ interface Category {
 }
 
 export function MainLayout({
-  setDisplayedCategories,
+  authToken,
+  setAuthToken,
   isDarkMode,
   setDarkMode,
 }: MainLayoutProps) {
   return (
     <div id="mainlayout_container">
-      <Header isDarkMode={isDarkMode} setDarkMode={setDarkMode} />
+      <Header
+        isDarkMode={isDarkMode}
+        setDarkMode={setDarkMode}
+        authToken={authToken}
+        setAuthToken={setAuthToken}
+      />
       <div id="mainlayout_outlet">
         <Outlet />
       </div>

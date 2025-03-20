@@ -1,62 +1,53 @@
 import React, { useState, useEffect } from "react";
+import { ImageUploadForm } from "./images/ImageUploadForm";
+import { ImageGallery } from "./images/ImageGallery";
+
+interface Image {
+  _id: string;
+  src: string;
+  name: string;
+  author: string;
+  cat_ids: string[];
+}
 
 interface ProfileProps {
   username: string;
-  onUsernameChange: React.Dispatch<React.SetStateAction<string>>;
+  authToken: string;
+  isLoading: boolean;
+  userImages: Image[];
+  setAuthToken: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export function Profile({ username, onUsernameChange }: ProfileProps) {
-  const [password, setPassword] = useState("");
+export function Profile({
+  username,
+  authToken,
+  isLoading,
+  userImages,
+  setAuthToken,
+}: ProfileProps) {
+  if (!username || typeof username !== "string") {
+    return <h2>No username was found</h2>;
+  }
 
-  const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newUsername = e.target.value;
-    onUsernameChange(newUsername); // Update state in App
-  };
+  if (!userImages) {
+    return <h2>Category not found</h2>;
+  }
 
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newPassword = e.target.value;
-    setPassword(newPassword);
-  };
+  function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
+    setAuthToken("");
+  }
+
   return (
     <div>
-      {username === "User" ? (
-        <div>
-          <h2>
-            Welcome, please log in or register. <br></br>It's a WIP<br></br>{" "}
-            Would fetch user bio and images here. Also would have different
-            mobile visuals as it would have the images more column-like to be
-            scroll friendly
-          </h2>
-          <label>
-            Username{" "}
-            <input
-              onChange={handleUsernameChange}
-              style={{ border: "1px solid grey" }}
-            />
-          </label>
-          <label>
-            Password{" "}
-            <input
-              onChange={handlePasswordChange}
-              style={{ border: "1px solid grey" }}
-            />
-          </label>
-        </div>
-      ) : (
-        <div>
-          <h2>Welcome, {username}</h2>
-          <label>
-            Username{" "}
-            <input
-              onChange={handleUsernameChange}
-              style={{ border: "1px solid grey" }}
-            />
-          </label>
-          <p className="Bio"></p>
-          {/* Images */}
-          <button>Upload Image Button</button>
-        </div>
-      )}
+      <h1>{username}'s Home</h1>
+      <button onClick={handleClick}>Log Out</button>
+      <ImageUploadForm authToken={authToken} />
+      <h2>History</h2>
+      <ImageGallery
+        isLoading={isLoading}
+        fetchedImages={userImages}
+        authToken={authToken}
+      />
     </div>
   );
 }
