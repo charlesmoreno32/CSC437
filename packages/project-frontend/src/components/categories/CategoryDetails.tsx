@@ -2,28 +2,40 @@ import { useCategoryFetching } from "./useCategoryFetching.js";
 import { useParams } from "react-router-dom";
 import "./CategoryGallery.css";
 
-export function CategoryDetails() {
+interface Category {
+  _id: string;
+  cover_src: string;
+  name: string;
+  description: string;
+  image_ids: string[];
+}
+
+interface Image {
+  _id: string;
+  src: string;
+  name: string;
+  author: string;
+}
+
+interface CategoryDetailsProps {
+  isLoading: boolean;
+  fetchedImages: Image[];
+}
+
+export function CategoryDetails({
+  isLoading,
+  fetchedImages,
+}: CategoryDetailsProps) {
   const { categoryId } = useParams();
-  if (!categoryId) {
-    return <h2>Invalid category</h2>;
-  }
-  const { categoriesLoading, fetchedCategories } = useCategoryFetching(
-    categoryId,
-    500
-  );
-  if (categoriesLoading) {
+  if (isLoading) {
     return <div>Loading...</div>;
   }
-  const categoryData = fetchedCategories[0];
+  const categoryData = fetchedImages.find(
+    (category) => category._id === categoryId
+  );
   if (!categoryData) {
-    return (
-      <h2>
-        Category {categoryId} not found. This implementation will be done later
-        when able to do backend queries.
-      </h2>
-    );
+    return <h2>Category not found</h2>;
   }
-  console.log(categoryData.cover_src);
 
   return (
     <div>
